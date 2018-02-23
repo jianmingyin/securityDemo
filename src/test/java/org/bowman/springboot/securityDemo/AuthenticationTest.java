@@ -15,4 +15,9 @@ public class AuthenticationTest extends AppTest {
         System.out.println("test message: " + hello);
         System.out.println("test message: " + jerry);
     }
+	
+	@Test
+	public void testAuthenticationSuccess() {
+		
+	}
 }
