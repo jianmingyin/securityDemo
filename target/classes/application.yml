@@ -1,8 +1,0 @@
-server:
-    port: 8089
-    contextPath: /security
-    session.timeout: 1
-    
-test:
-    hello: Hello world!
-    jerry: I am Jerry
