@@ -13,11 +13,11 @@ public class AuthenticationTest extends AppTest {
 	@Test
     public void helloTest() throws Exception {
         System.out.println("test message: " + hello);
-        System.out.println("test message: " + jerry);
     }
 	
 	@Test
 	public void testAuthenticationSuccess() {
+		System.out.println("test message: " + jerry);
 		
 	}
 }
