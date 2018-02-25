@@ -27,6 +27,5 @@ abstract class MyBaseErrorHandler extends GenericFilter {
 	@Override
 	public void destroy() {}
 	
-	protected abstract void handlerException
-			(Exception e, HttpServletResponseWrapper response)  throws IOException;
+	protected abstract void handlerException (Exception e, HttpServletResponseWrapper response)  throws IOException;
 }

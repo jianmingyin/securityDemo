@@ -1,7 +1,7 @@
 package org.bowman.springboot.securityDemo;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.bowman.springboot.securityDemo.resources.BabyResource;
 import org.junit.Assert;
