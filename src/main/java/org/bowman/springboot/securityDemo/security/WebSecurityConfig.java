@@ -33,23 +33,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		log.info("-----------------------configure--------------------------");
 		http
+			.csrf().disable()
+			.httpBasic()
+		.and()
+			/*
+			 ##########################################################################
+			 # 无法将同一个类型的不同对象放在FILTER CHAIN的不同位置（它们会被放到一起），
+			 # 所以这里定义了两个hander。
+			 ##########################################################################
+			 */
 			.addFilterBefore(new AuthenticationErrorHander(), BasicAuthenticationFilter.class)
 			.addFilterAfter(new AccessDeniedExceptionHandler(), ExceptionTranslationFilter.class)
-			.csrf().disable()
 			.authenticationProvider(new MyDaoAuthenticationProvider())
 	        .authorizeRequests()
 	        .antMatchers("/login").permitAll()
 	        .antMatchers(HttpMethod.DELETE).hasAnyAuthority("ADMIN")
 	        .anyRequest().authenticated()
         .and()
-        		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+        	.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
         .and()
-        		.logout().logoutUrl("/logout")
-        		.logoutSuccessHandler(new MySeccessHandler())
-        		.clearAuthentication(true)
-        		.invalidateHttpSession(true)	
-        .and()
-        		.httpBasic();
+    		.logout().logoutUrl("/logout")
+    		.logoutSuccessHandler(new MySeccessHandler())
+    		.clearAuthentication(true)
+    		.invalidateHttpSession(true)	
+        ;
 	}
 	
 	private static class MySeccessHandler implements LogoutSuccessHandler {
