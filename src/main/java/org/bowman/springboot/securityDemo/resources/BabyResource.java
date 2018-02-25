@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping(value="/baby")
-public class BabyResources {
+public class BabyResource {
 	
 	@RequestMapping
 	public ResponseEntity<Baby> getBadyByName(@RequestParam(required = false) String name){
