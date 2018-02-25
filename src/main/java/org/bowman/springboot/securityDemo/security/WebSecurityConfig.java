@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import org.bowman.springboot.securityDemo.exceptions.MyBadCredentialsException;
 import org.bowman.springboot.securityDemo.utils.ResponseUtil;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,6 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authenticationProvider(new MyDaoAuthenticationProvider())
 	        .authorizeRequests()
 	        .antMatchers("/login").permitAll()
+	        .antMatchers(HttpMethod.DELETE).hasAnyAuthority("ADMIN")
 	        .anyRequest().authenticated()
         .and()
         		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
