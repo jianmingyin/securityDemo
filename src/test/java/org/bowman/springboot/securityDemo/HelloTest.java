@@ -1,5 +1,8 @@
 package org.bowman.springboot.securityDemo;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.bowman.springboot.securityDemo.resources.BabyResource;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,9 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class HelloTest extends AppTest {
 	@Value("${test.hello}")
@@ -25,7 +25,7 @@ public class HelloTest extends AppTest {
 	 *  	test.hello = Hello testing world!
 	 *  	
 	 *  application.yml:
-	 *  	test.hello = Hello testing world!
+	 *  	test.hello = Hello world!
 	 *  	test.jerry = I am Jerry
 	 ************************************************************************/
 	@Test
@@ -40,7 +40,7 @@ public class HelloTest extends AppTest {
 	
 	
 	/************************************************************************
-	 *  使用MockMvc时，Filters 不起作用
+	 *  使用 .standaloneSetup 构建 MockMvc时，Filters 不起作用
 	 ************************************************************************/
 	@Autowired
 	private BabyResource babyResource;
